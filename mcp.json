@@ -1,0 +1,180 @@
+{
+  "name": "mongo-query-mcp",
+  "displayName": "MongoDB自然语言查询服务器",
+  "description": "一个强大的MCP服务器，支持使用自然语言查询MongoDB数据库，专门为生物入侵研究等学术领域设计。集成向量相似度搜索、AI结果重排序和智能分析功能。",
+  "version": "1.0.0",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://github.com/your-username"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/your-username/mongo-query-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/mongo-query-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/mongo-query-mcp/issues"
+  },
+  "keywords": [
+    "mongodb",
+    "mcp",
+    "nlp",
+    "vector-search",
+    "ai",
+    "natural-language",
+    "database",
+    "chinese",
+    "biology-research",
+    "embedding"
+  ],
+  "categories": [
+    "database",
+    "ai",
+    "search",
+    "nlp"
+  ],
+  "runtime": "python",
+  "mcpVersion": "1.0.0",
+  "tools": [
+    {
+      "name": "query_mongo_with_natural_language",
+      "description": "使用自然语言查询MongoDB数据库，支持向量相似度搜索和AI结果优化",
+      "parameters": {
+        "query_text": {
+          "type": "string",
+          "description": "自然语言查询文本",
+          "required": true
+        },
+        "db_name": {
+          "type": "string",
+          "description": "数据库名称（可选）",
+          "required": false
+        },
+        "collection_name": {
+          "type": "string",
+          "description": "集合名称（可选）",
+          "required": false
+        },
+        "limit": {
+          "type": "integer",
+          "description": "返回结果数量限制",
+          "default": 5,
+          "required": false
+        },
+        "use_reranker": {
+          "type": "boolean",
+          "description": "是否使用重排序模型优化结果",
+          "default": true,
+          "required": false
+        },
+        "enhance_results": {
+          "type": "boolean",
+          "description": "是否使用AI生成整合分析报告",
+          "default": true,
+          "required": false
+        }
+      }
+    },
+    {
+      "name": "text_to_vector",
+      "description": "将文本转换为向量表示，用于相似度计算",
+      "parameters": {
+        "text": {
+          "type": "string",
+          "description": "要转换为向量的文本",
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "get_database_info",
+      "description": "获取MongoDB数据库和集合的基本信息",
+      "parameters": {}
+    }
+  ],
+  "config": {
+    "command": "python",
+    "args": ["start_mcp_server.py"],
+    "env": {
+      "PYTHONPATH": "."
+    }
+  },
+  "requirements": {
+    "python": ">=3.8",
+    "dependencies": [
+      "pymongo>=4.6.2",
+      "python-dotenv>=1.0.0",
+      "numpy>=1.26.0",
+      "torch>=2.2.0",
+      "transformers>=4.40.0",
+      "ollama>=0.1.0",
+      "mcp>=1.0.0",
+      "httpx>=0.27.0",
+      "pydantic>=2.0.0",
+      "requests>=2.32.3"
+    ],
+    "system": [
+      "MongoDB 4.4+",
+      "Ollama (for local model inference)"
+    ]
+  },
+  "setup": {
+    "installation": [
+      "pip install -r requirements.txt",
+      "安装并启动MongoDB服务",
+      "安装并启动Ollama服务",
+      "下载所需的本地模型：ollama pull dengcao/Qwen3-Embedding-8B:Q5_K_M",
+      "配置环境变量文件 .env"
+    ],
+    "configuration": {
+      "env_file": ".env",
+      "required_vars": [
+        "MONGO_URI=mongodb://localhost:27017/",
+        "MONGO_DB_NAME=your_database_name",
+        "MONGO_COLLECTION=your_collection_name"
+      ],
+      "optional_vars": [
+        "DEEPSEEK_API_KEY=your_api_key_for_enhanced_results",
+        "DEEPSEEK_API_URL=https://api.deepseek.com/chat/completions",
+        "OLLAMA_HOST=http://localhost:11434"
+      ]
+    }
+  },
+  "features": [
+    "自然语言转向量搜索",
+    "MongoDB向量相似度查询",
+    "AI驱动的结果重排序",
+    "智能结果分析和报告生成",
+    "支持中文和英文查询",
+    "灵活的数据库配置",
+    "批量数据导入支持",
+    "专为学术研究优化"
+  ],
+  "use_cases": [
+    "学术文献检索和分析",
+    "生物入侵研究数据查询",
+    "政策文档智能搜索",
+    "科研数据挖掘",
+    "知识图谱构建",
+    "内容推荐系统"
+  ],
+  "demo": {
+    "example_queries": [
+      "外来物种入侵对生态系统的影响",
+      "生物入侵的防控措施有哪些",
+      "入侵物种对农业生产的危害",
+      "生物入侵监测技术发展趋势"
+    ]
+  },
+  "tags": [
+    "production-ready",
+    "chinese-support",
+    "vector-search",
+    "ai-enhanced",
+    "academic-research",
+    "mongodb",
+    "nlp"
+  ]
+}
