@@ -1,0 +1,2 @@
+# mongo-query-mcp
+test
